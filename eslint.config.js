@@ -274,6 +274,7 @@ export default [
   {
     files: [
       'site/src/assets/application.js',
+      'site/src/assets/bootstrap.bundle.js',
       'site/src/assets/partials/*.js',
       'site/src/assets/search.js',
       'site/src/assets/snippets.js',
