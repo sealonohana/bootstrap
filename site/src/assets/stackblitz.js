@@ -30,7 +30,7 @@ document.querySelectorAll('.btn-edit').forEach(btn => {
     const htmlSnippet = exampleEl.innerHTML
     const jsSnippet = codeSnippet.querySelector('.btn-edit').getAttribute('data-sb-js-snippet')
     // Get extra classes for this example
-    const classes = Array.from(exampleEl.classList).join(' ')
+    const classes = [...exampleEl.classList].join(' ')
 
     openBootstrapSnippet(htmlSnippet, jsSnippet, classes)
   })
