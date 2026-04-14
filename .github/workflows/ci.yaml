@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '0.10.48'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install PhantomJS
+        run: |
+          curl -L https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -o /tmp/phantomjs.tar.bz2
+          tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp
+          sudo mv /tmp/phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
+          phantomjs --version
+
+      - name: Run tests
+        run: make test-browser
